@@ -122,4 +122,14 @@ public class AddressBook {
 			;
 		}
 	}
+
+	public void DeleteContact(String name) {
+		for (AddressBook item : lst) {
+			if (item.getFirstName().equals(name)) {
+				lst.remove(item);
+				System.out.println("Contact deleted!");
+				break;
+			}
+		}
+	}
 }
