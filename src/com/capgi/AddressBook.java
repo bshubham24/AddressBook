@@ -1,5 +1,7 @@
 package com.capgi;
 
+import java.util.ArrayList;
+
 public class AddressBook {
 	private String firstName;
 	private String lastName;
@@ -87,4 +89,10 @@ public class AddressBook {
 		this.email = email;
 	}
 
+	ArrayList<AddressBook> lst = new ArrayList<AddressBook>();
+
+	public void AddContact(AddressBook obj) {
+		lst.add(obj);
+		System.out.println("Contact Added");
+	}
 }
