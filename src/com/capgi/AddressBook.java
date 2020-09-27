@@ -95,4 +95,31 @@ public class AddressBook {
 		lst.add(obj);
 		System.out.println("Contact Added");
 	}
+
+	public boolean isNotEmpty() {
+		if (lst.size() != 0) {
+			return true;
+		} else
+			return false;
+	}
+
+	public void EditContact(String name, String lName, String address1, String city1, String state1, String zip1,
+			String phoneNo1, String email1) {
+		for (AddressBook item : lst) {
+			if (item.getFirstName().equals(name)) {
+				item.setLastName(lName);
+				item.setAddress(address1);
+				item.setCity(city1);
+				item.setState(state1);
+				item.setZip(zip1);
+				item.setPhoneNo(phoneNo1);
+				item.setEmail(email1);
+
+				System.out.println("Contact successfully edited");
+
+			} else
+				System.out.println("Person Not found!");
+			;
+		}
+	}
 }
