@@ -12,6 +12,7 @@ public class Executor {
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Pick an option");
 			System.out.println("1. Add a contact");
+			System.out.println("2. Edit an existing Contact");
 			System.out.println("4. Exit");
 			choice = Integer.parseInt(sc.nextLine());
 
@@ -38,9 +39,41 @@ public class Executor {
 				AddressBookObj.AddContact(AddressBookObj);
 				System.out.println("Pick an option");
 				System.out.println("1. Add a contact");
+				System.out.println("2. Edit an existing Contact");
 				System.out.println("4. Exit");
 				choice = Integer.parseInt(sc.nextLine());
 
+			}
+			if (choice == 2) {
+				if (AddressBookObj.isNotEmpty()) {
+					System.out.println("Enter the first name of person to edit contact");
+					String name = sc.nextLine();
+					System.out.println("Enter new details");
+					System.out.println("Enter the change in lastname");
+					String lname = sc.nextLine();
+					System.out.println("Enter the change in address");
+					String address1 = sc.nextLine();
+					System.out.println("Enter the change in city");
+					String city1 = sc.nextLine();
+					System.out.println("Enter the change in state");
+					String state1 = sc.nextLine();
+					System.out.println("Enter the change in zip code");
+					String zip1 = sc.nextLine();
+					System.out.println("Enter the change in phone number");
+					String phoneNo1 = sc.nextLine();
+					System.out.println("Enter the change in email");
+					String email1 = sc.nextLine();
+
+					AddressBookObj.EditContact(name, lname, address1, city1, state1, zip1, phoneNo1, email1);
+
+				} else
+					System.out.println("Sorry, Address book is empty!");
+
+				System.out.println("Pick an option");
+				System.out.println("1. Add a contact");
+				System.out.println("2. Edit an existing Contact");
+				System.out.println("4. Exit");
+				choice = Integer.parseInt(sc.nextLine());
 			}
 		}
 		System.out.println(AddressBookObj.getFirstName() + " " + AddressBookObj.getLastName());
