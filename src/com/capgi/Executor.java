@@ -9,7 +9,7 @@ public class Executor {
 		String firstName = "", lastName = "", address = "", city = "", state = "", zip = "", phoneNo = "", email = "";
 		AddressBook AddressBookObj = new AddressBook(firstName, lastName, address, city, state, zip, phoneNo, email);
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Welcome to the address book");
+		System.out.println("Welcome to the Address Book");
 		System.out.println("Pick an option");
 		System.out.println("1. Add a contact");
 		System.out.println("2. Edit an existing Contact");
@@ -70,7 +70,7 @@ public class Executor {
 					AddressBookObj.EditContact(name, lname, address1, city1, state1, zip1, phoneNo1, email1);
 
 				} else
-					System.out.println("Sorry, Address book is empty!");
+					System.out.println("Sorry, Address Book is empty!");
 
 				System.out.println("Pick an option");
 				System.out.println("1. Add a contact");
@@ -87,7 +87,7 @@ public class Executor {
 					AddressBookObj.DeleteContact(name);
 
 				} else
-					System.out.println("Sorry, Address book is empty!");
+					System.out.println("Sorry, Address Book is empty!");
 
 				System.out.println("Pick an option");
 				System.out.println("1. Add a contact");
