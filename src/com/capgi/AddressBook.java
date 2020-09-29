@@ -1,6 +1,8 @@
 package com.capgi;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AddressBook {
 	private String firstName;
@@ -11,6 +13,10 @@ public class AddressBook {
 	private String zip;
 	private String phoneNo;
 	private String email;
+
+	public AddressBook() {
+
+	}
 
 	public AddressBook(String firstName, String lastName, String address, String city, String state, String zip,
 			String phoneNo, String email) {
@@ -91,9 +97,10 @@ public class AddressBook {
 
 	ArrayList<AddressBook> lst = new ArrayList<AddressBook>();
 
-	public void AddContact(AddressBook obj) {
+	public ArrayList<AddressBook> AddContact(AddressBook obj) {
 		lst.add(obj);
 		System.out.println("Contact Added");
+		return lst;
 	}
 
 	public boolean isNotEmpty() {
@@ -116,10 +123,11 @@ public class AddressBook {
 				item.setEmail(email1);
 
 				System.out.println("Contact successfully edited");
+				break;
 
 			} else
 				System.out.println("Person Not found!");
-			;
+
 		}
 	}
 
@@ -131,5 +139,43 @@ public class AddressBook {
 				break;
 			}
 		}
+	}
+
+	HashMap<Integer, ArrayList<AddressBook>> mapElement = new HashMap<Integer, ArrayList<AddressBook>>();
+
+	public void PrintAddressBooks() {
+		System.out.println("Following Address books available");
+		for (Map.Entry<Integer, ArrayList<AddressBook>> item : mapElement.entrySet()) {
+
+			System.out.println(item.getKey());
+
+		}
+	}
+
+	public void AddAddressBook(int no, ArrayList<AddressBook> lstt) {
+
+		mapElement.put(no, lstt);
+
+	}
+
+	public ArrayList<AddressBook> findAddressBook(int bookNo) {
+		ArrayList<AddressBook> temp = new ArrayList<AddressBook>();
+		for (Map.Entry<Integer, ArrayList<AddressBook>> item : mapElement.entrySet()) {
+			if (item.getKey() == bookNo) {
+				System.out.println("book is present. Adding");
+				temp = (ArrayList<AddressBook>) item.getValue();
+				break;
+
+			} else {
+				System.out.println("Wrong name or address book is not present");
+				break;
+
+			}
+		}
+		return temp;
+	}
+
+	public HashMap<Integer, ArrayList<AddressBook>> getMap() {
+		return mapElement;
 	}
 }
