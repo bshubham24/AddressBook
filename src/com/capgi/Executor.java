@@ -1,13 +1,14 @@
 package com.capgi;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Executor {
 	public static void main(String[] args) {
 
 		int choice = 0;
-		String firstName = "", lastName = "", address = "", city = "", state = "", zip = "", phoneNo = "", email = "";
-		AddressBook AddressBookObj = new AddressBook(firstName, lastName, address, city, state, zip, phoneNo, email);
+		String firstName, lastName, address, city, state, zip, phoneNo, email;
+		AddressBook AddressBookObj1 = new AddressBook();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Welcome to the Address Book");
 		System.out.println("Pick an option");
@@ -36,8 +37,9 @@ public class Executor {
 				phoneNo = sc.nextLine();
 				System.out.println("Enter the email");
 				email = sc.nextLine();
-				AddressBookObj = new AddressBook(firstName, lastName, address, city, state, zip, phoneNo, email);
-				AddressBookObj.AddContact(AddressBookObj);
+				AddressBook AddressBookObj = new AddressBook(firstName, lastName, address, city, state, zip, phoneNo,
+						email);
+				AddressBookObj1.AddContact(AddressBookObj);
 				System.out.println("Pick an option");
 				System.out.println("1. Add a contact");
 				System.out.println("2. Edit an existing Contact");
@@ -48,7 +50,7 @@ public class Executor {
 
 			}
 			if (choice == 2) {
-				if (AddressBookObj.isNotEmpty()) {
+				if (AddressBookObj1.isNotEmpty()) {
 					System.out.println("Enter the first name of person to edit contact");
 					String name = sc.nextLine();
 					System.out.println("Enter new details");
@@ -67,7 +69,7 @@ public class Executor {
 					System.out.println("Enter the change in email");
 					String email1 = sc.nextLine();
 
-					AddressBookObj.EditContact(name, lname, address1, city1, state1, zip1, phoneNo1, email1);
+					AddressBookObj1.EditContact(name, lname, address1, city1, state1, zip1, phoneNo1, email1);
 
 				} else
 					System.out.println("Sorry, Address Book is empty!");
@@ -81,10 +83,10 @@ public class Executor {
 			}
 
 			if (choice == 3) {
-				if (AddressBookObj.isNotEmpty()) {
+				if (AddressBookObj1.isNotEmpty()) {
 					System.out.println("Enter the first name of person to delete contact");
 					String name = sc.nextLine();
-					AddressBookObj.DeleteContact(name);
+					AddressBookObj1.DeleteContact(name);
 
 				} else
 					System.out.println("Sorry, Address Book is empty!");
@@ -98,12 +100,24 @@ public class Executor {
 
 			}
 		}
-		if (AddressBookObj.isNotEmpty()) {
-			System.out.println(AddressBookObj.getFirstName() + " " + AddressBookObj.getLastName());
-			System.out.println(AddressBookObj.getAddress() + " " + AddressBookObj.getCity() + " "
-					+ AddressBookObj.getState() + " " + AddressBookObj.getZip());
-			System.out.println(AddressBookObj.getPhoneNo());
-			System.out.println(AddressBookObj.getEmail());
+
+		if (AddressBookObj1.isNotEmpty()) {
+			System.out.println("Do you want to print the contacts: y/n");
+			char choice1 = sc.next().charAt(0);
+			if (choice1 == 'y') {
+				ArrayList<AddressBook> lstM = new ArrayList<AddressBook>();
+				lstM = AddressBookObj1.getList();
+				System.out.println("printing contacts");
+				for (AddressBook item : lstM) {
+					System.out.println(item.getFirstName() + " " + item.getLastName());
+					System.out.println(AddressBookObj1.getAddress() + " " + item.getCity() + " " + item.getState() + " "
+							+ item.getZip());
+					System.out.println(item.getPhoneNo());
+					System.out.println(item.getEmail());
+				}
+			}
+		} else {
+			System.out.println("Address Book has no contacts");
 		}
 	}
 }
