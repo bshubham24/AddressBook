@@ -12,6 +12,10 @@ public class AddressBook {
 	private String phoneNo;
 	private String email;
 
+	public AddressBook() {
+
+	}
+
 	public AddressBook(String firstName, String lastName, String address, String city, String state, String zip,
 			String phoneNo, String email) {
 		super();
@@ -94,6 +98,7 @@ public class AddressBook {
 	public void AddContact(AddressBook obj) {
 		lst.add(obj);
 		System.out.println("Contact Added");
+
 	}
 
 	public boolean isNotEmpty() {
@@ -131,5 +136,9 @@ public class AddressBook {
 				break;
 			}
 		}
+	}
+
+	public ArrayList<AddressBook> getList() {
+		return lst;
 	}
 }
