@@ -1,8 +1,6 @@
 package com.capgi;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class AddressBook {
 	private String firstName;
@@ -97,10 +95,10 @@ public class AddressBook {
 
 	ArrayList<AddressBook> lst = new ArrayList<AddressBook>();
 
-	public ArrayList<AddressBook> AddContact(AddressBook obj) {
+	public void AddContact(AddressBook obj) {
 		lst.add(obj);
 		System.out.println("Contact Added");
-		return lst;
+
 	}
 
 	public boolean isNotEmpty() {
@@ -141,41 +139,8 @@ public class AddressBook {
 		}
 	}
 
-	HashMap<Integer, ArrayList<AddressBook>> mapElement = new HashMap<Integer, ArrayList<AddressBook>>();
+	public ArrayList<AddressBook> getList() {
+		return lst;
 
-	public void PrintAddressBooks() {
-		System.out.println("Following Address books available");
-		for (Map.Entry<Integer, ArrayList<AddressBook>> item : mapElement.entrySet()) {
-
-			System.out.println(item.getKey());
-
-		}
-	}
-
-	public void AddAddressBook(int no, ArrayList<AddressBook> lstt) {
-
-		mapElement.put(no, lstt);
-
-	}
-
-	public ArrayList<AddressBook> findAddressBook(int bookNo) {
-		ArrayList<AddressBook> temp = new ArrayList<AddressBook>();
-		for (Map.Entry<Integer, ArrayList<AddressBook>> item : mapElement.entrySet()) {
-			if (item.getKey() == bookNo) {
-				System.out.println("book is present. Adding");
-				temp = (ArrayList<AddressBook>) item.getValue();
-				break;
-
-			} else {
-				System.out.println("Wrong name or address book is not present");
-				break;
-
-			}
-		}
-		return temp;
-	}
-
-	public HashMap<Integer, ArrayList<AddressBook>> getMap() {
-		return mapElement;
 	}
 }
