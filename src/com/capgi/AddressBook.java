@@ -1,6 +1,8 @@
 package com.capgi;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AddressBook {
 	private String firstName;
@@ -11,6 +13,8 @@ public class AddressBook {
 	private String zip;
 	private String phoneNo;
 	private String email;
+
+	HashMap<Integer, ArrayList<AddressBook>> mapElement = new HashMap<Integer, ArrayList<AddressBook>>();
 
 	public AddressBook() {
 
@@ -142,5 +146,30 @@ public class AddressBook {
 	public ArrayList<AddressBook> getList() {
 		return lst;
 
+	}
+
+	public void AddAddressBook(int bookNo, ArrayList<AddressBook> lst) {
+		mapElement.put(bookNo, lst);
+	}
+
+	public ArrayList<AddressBook> findAnAddressBook(int bookNo) {
+		for (Map.Entry<Integer, ArrayList<AddressBook>> item : mapElement.entrySet()) {
+			if (item.getKey() == bookNo) {
+				return item.getValue();
+			}
+
+		}
+		System.out.println("Address book not found!");
+		return null;
+	}
+
+	public void PrintAddressBooks() {
+		for (Map.Entry<Integer, ArrayList<AddressBook>> item : mapElement.entrySet()) {
+			System.out.println(item.getKey());
+		}
+	}
+
+	public HashMap<Integer, ArrayList<AddressBook>> getMap() {
+		return mapElement;
 	}
 }
